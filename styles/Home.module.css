@@ -108,6 +108,36 @@
   margin-left: 0.5rem;
 }
 
+.bottom {
+  display: flex;
+  margin-top: 10px;
+}
+
+.check {
+  margin: 0px 20px;
+}
+
+
+.gbutton{
+height: 30px;
+width: 200px;
+margin: 15px 0;
+background-color: #365cd6;
+border-radius: 5px;
+color: #eaeaea;
+
+}
+
+.sbutton{
+
+height: 30px;
+width: 500px;
+background-color: rgb(104, 230, 235);
+border: none;
+text-align: center;
+padding-top: 5px;
+}
+
 @media (max-width: 600px) {
   .grid {
     width: 100%;
