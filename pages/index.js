@@ -3,25 +3,44 @@ import Head from 'next/head'
 import Image from 'next/image'
 import styles from '../styles/Home.module.css'
 import axios from 'axios'
-import Understand from 'twilio/lib/rest/preview/Understand'
 
 export default function Home() {
 
-const [unusedNumber, setUnusedNumber] = useState("")
+  const [unusedNumber, setUnusedNumber] = useState("")
+  const [numberObject, setNumberObject] = useState("")
+
+  
 
   const fetchData = async () => {
  
     const response = await axios.get("http://localhost:5001/phonegenerator-3ba72/us-central1/app/api/get-phoneNumber")
 
-    const data = response?.data?.data
+    const data = await response?.data?.data
 
-    const newdata = Object.values(data)
+    console.log(data)
 
-setUnusedNumber(newdata[0].phoneNumber)
+    if (data === null ||  data === undefined) {
+      console.log(data)
+ 
+  return
+    }
+    console.log("Helooo")
+         const newdata = Object?.values(data)
+       setUnusedNumber(newdata[0].phoneNumber)
+        setNumberObject(data)
+
     return
 
   }
 
+
+  const addNonworkingNumber = async (event) => {
+
+    event.preventDefault()
+    await axios.post("http://localhost:5001/phonegenerator-3ba72/us-central1/app/api/add-NonWorkingNumber", numberObject)
+    setUnusedNumber('')
+    setNumberObject('')
+  }
 
   const getUnusedNumber = (event) => {
    
@@ -30,6 +49,19 @@ setUnusedNumber(newdata[0].phoneNumber)
 
   }
 
+
+  
+  const addWorkingNumber = async (event) => {
+
+    event.preventDefault()
+    console.log(unusedNumber)
+     console.log(numberObject)
+    await axios.post("http://localhost:5001/phonegenerator-3ba72/us-central1/app/api/add-WorkingNumber", numberObject)
+    setUnusedNumber("")
+     setNumberObject('')
+  }
+
+  
   return (
     <div className={styles.container}>
       <Head>
@@ -53,13 +85,13 @@ setUnusedNumber(newdata[0].phoneNumber)
         </div>
         <div className={styles.bottom}>
  <h3>Did the Phone Number Exist</h3>
-          <div className={styles.check}>
-  <Image src="/cross.svg" width={50} height={50} />
+          <div  onClick={addNonworkingNumber} className={styles.check}>
+  <Image src="/cross.svg" alt="cross" width={50} height={50} />
           </div>
           
         
-          <div  >
-      <Image src="/check.svg" width={50} height={50}/>
+          <div  onClick={addWorkingNumber}  >
+      <Image src="/check.svg" alt="check" width={50} height={50}/>
           </div>
     
         </div>
