@@ -37,6 +37,8 @@ export default function Home() {
   const addNonworkingNumber = async (event) => {
 
     event.preventDefault()
+      console.log(unusedNumber)
+     console.log(numberObject)
     await axios.post("http://localhost:5001/phonegenerator-3ba72/us-central1/app/api/add-NonWorkingNumber", numberObject)
     setUnusedNumber('')
     setNumberObject('')
