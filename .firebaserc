@@ -1,5 +1,7 @@
 {
   "projects": {
-    "default": "phonegenerator-3ba72"
-  }
+    "default": "phonegenerator-3ba72",
+    "production": "phonegenerate"
+  },
+  "targets": {}
 }
