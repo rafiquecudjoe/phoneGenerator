@@ -3,9 +3,13 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
-    "build": "next build && next export",
-    "start": "next start",
+    "dev": "next src/",
+    "build": "next build src/",
+    "start": "next start src/",
+    "serve": "npm run build && firebase emulators:start --only functions,hosting",
+    "shell": "npm run build && firebase functions:shell",
+    "deploy": "firebase deploy --only functions,hosting",
+    "logs": "firebase functions:log",
     "lint": "next lint"
   },
   "dependencies": {
