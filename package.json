@@ -9,8 +9,7 @@
     "serve": "npm run build && firebase emulators:start --only functions,hosting",
     "shell": "npm run build && firebase functions:shell",
     "deploy": "firebase deploy --only functions,hosting",
-    "logs": "firebase functions:log",
-    "lint": "next lint"
+    "logs": "firebase functions:log"
   },
   "dependencies": {
     "axios": "^0.26.0",
