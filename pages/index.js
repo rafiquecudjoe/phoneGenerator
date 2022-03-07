@@ -92,7 +92,7 @@ export default function Home() {
           </div>
           
         
-          <div  onClick={addWorkingNumber}  >
+          <div  onClick={addWorkingNumber} className={styles.working}>
       <Image src="/check.svg" alt="check" width={50} height={50}/>
           </div>
     
